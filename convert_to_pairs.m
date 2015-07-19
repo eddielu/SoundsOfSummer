@@ -11,7 +11,7 @@ function tuple = convert_to_pairs(peaks)
 
 del_t = 35; % bound on time difference (in pixels)
 del_f = 30; % bound on frequency difference (in pixels)
-fanout = 3; % Maximum number of pairs per peak.
+fanout = 10; % Maximum number of pairs per peak.
 
 
 [f, t] = find(peaks);

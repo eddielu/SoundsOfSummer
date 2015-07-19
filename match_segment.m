@@ -14,14 +14,14 @@ hashTableSize = size(hashtable,1);
 
 % Find peak pairs from the clip
 
-% INSERT CODE HERE
-clipTuples = 0;     % Replace this line
+
+clipTuples = convert_to_pairs(fingerprint(clip, fs));     % Replace this line
 
 % Construct the cell of matches
 matches = cell(numSongs,1);
 for k = 1:size(clipTuples, 1)
-    % INSERT CODE HERE TO CALCULATE HASH
-    clipHash = 1;   % Replace this line
+    clipHash = simple_hash(clipTuples(k,3), clipTuples(k,4), clipTuples(k,2)-clipTuples(k,1), hashTableSize);
+    %clipHash = 1;   % Replace this line
     
     % If an entry exists with this hash, find the song(s) with matching peak pairs
     if (~isempty(hashtable{clipHash, 1}))
@@ -29,45 +29,62 @@ for k = 1:size(clipTuples, 1)
         matchTime = hashtable{clipHash, 2}; % row vector of collisions
         
         % Calculate the time difference between clip pair and song pair
-        % INSERT CODE HERE
+        matchTime = matchTime - clipTuples(k,1);
                 
         % Add matches to the lists for each individual song
         for n = 1:numSongs
             % INSERT CODE HERE
-            % matches{n} = [matches{n}, ...
+            matches{n} = [matches{n}, matchTime(find(matchID == n))];
         end
     end
 end
 
 % Find the counts of the mode of the time offset array for each song
 % INSERT CODE HERE
+maxV = 0;
+maxI = 0;
 for k = 1:numSongs
-    % INSERT CODE HERE
+    [blah, count] = mode(matches{k});
+    if maxV < count
+        maxV = count;
+        maxI = k;
+    end
 end
+bestMatchID = maxI;
 
 
 % Song decision and confidence
-% INSERT CODE HERE
+confidence = 1;
 
 
-optional_plot = 0; % turn plot on or off
+optional_plot = 1; % turn plot on or off
 
+% plot(matches{16})
 if optional_plot
     figure(3)
     clf
-    y = zeros(length(matches),1);
-    for k = 1:length(matches)
-        subplot(length(matches),1,k)
+    y = zeros(2,1);
+    for k = 16
+        subplot(2,1,1)
+        hist(matches{k},1000)
+        y(k) = max(hist(matches{k},1000));
+    end
+    for k = maxI
+        subplot(2,1,2)
         hist(matches{k},1000)
         y(k) = max(hist(matches{k},1000));
     end
     
-    for k = 1:length(matches)
-        subplot(length(matches),1,k)
+    for k = 16
+        subplot(2,1,1)
+        axis([-inf, inf, 0, max(y)])
+    end
+    for k = maxI
+        subplot(2,1,2)
         axis([-inf, inf, 0, max(y)])
     end
 
-    subplot(length(matches),1,1)
+    %subplot(1,1,1)
     title('Histogram of offsets for each song')
 end
 

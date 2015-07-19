@@ -20,9 +20,20 @@ desiredPPS = 30; % scales the threshold
 % Because the signal is real, only positive frequencies will be returned by
 % the spectrogram function, which is all we will need.
 
+resampledSound = resample(sound, new_smpl_rate, fs);
+    
+averagedSound = mean(resampledSound')';
+dcBias = mean(averagedSound);
+averagedSound = averagedSound - dcBias;
 
+
+
+window = 0.064 * new_smpl_rate;
+noverlap = 0.032 * new_smpl_rate;
+[S,F,T] = spectrogram(averagedSound, round(window), round(noverlap), [], new_smpl_rate);
+S = abs(S);
 % INSERT SPECTROGRAM CODE HERE.
-magS = 0; % Remove and replace this line to create a magS that is the magnitute of the spectrogram
+magS = S; % Remove and replace this line to create a magS that is the magnitute of the spectrogram
 
 
 
@@ -30,19 +41,21 @@ magS = 0; % Remove and replace this line to create a magS that is the magnitute 
 % directions
 
 
+
+
 % INSERT PEAK FINDING CODE HERE.
 peaks = ones(size(magS)); % 2D boolean array indicating position of local peaks
 for horShift = -gs:gs
     for vertShift = -gs:gs
         if(vertShift ~= 0 || horShift ~= 0) % Avoid comparing to self
-            % peaks = peaks.* (INSERT CODE HERE);
+            CS = circshift(S, [vertShift, horShift]);
+            P = (S > CS);
+            peaks = peaks .* P;
         end
     end
 end
 
 
-% EXPERIMENT WITH DIFFERENT THRESHOLD VALUES HERE.
-threshold = 0;
 
 % Calculate threshold to use.
 % We will set one threshold for the entire segment.  Improvements might be
@@ -50,9 +63,9 @@ threshold = 0;
 % and setting a lower threshold for higher frequencies.
 
 % THE FOLLOWING CODE TO BE UNCOMMENTED AFTER EXPERIMENTING WITH THRESHOLD
-% peakMags = peaks.*magS;
-% sortedpeakMags = sort(peakMags(:),'descend'); % sort all peak values in order
-% threshold = sortedpeakMags(ceil(max(T)*desiredPPS));
+peakMags = peaks.*magS;
+sortedpeakMags = sort(peakMags(:),'descend'); % sort all peak values in order
+threshold = sortedpeakMags(ceil(max(T)*desiredPPS));
 
 % Apply threshold
 if (threshold > 0)
@@ -60,6 +73,10 @@ if (threshold > 0)
 end
 
 
+% CODE TO PRODUCE GRAPH
+% imagesc(T,F,peaks);
+% colormap (1-gray);
+% fprintf(1, 'After threshold: %d\n', sum(sum(peaks)));
 
 
 optional_plot = 0; % turn plot on or off
