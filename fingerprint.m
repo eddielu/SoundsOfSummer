@@ -24,8 +24,7 @@ resampledSound = resample(sound, new_smpl_rate, fs);
     
 averagedSound = mean(resampledSound')';
 dcBias = mean(averagedSound);
-averagedSound = averagedSound - dcBias;
-
+averagedSound = resampledSound - dcBias;
 
 
 window = 0.064 * new_smpl_rate;

@@ -11,7 +11,7 @@ global numSongs
 
 hashTableSize = size(hashtable,1);
 
-
+soundsc(clip, fs);
 % Find peak pairs from the clip
 
 

@@ -1,6 +1,6 @@
 % Make a recording or 
 
-recordingOn = 0; %1 for recording from microphone, 0 for random segment
+recordingOn = 1; %1 for recording from microphone, 0 for random segment
 duration = 5; % Seconds
 
 
@@ -37,6 +37,9 @@ if recordingOn
     % Store data in Double-precision array.
     sound = getaudiodata(recObj);
     
+    % TODO: MAKE THIS SMARTER
+    sound = mean(sound, 2);
+    
 else % Select a random segment
     
     add_noise = 0; % Optionally add noise by making this 1.
@@ -67,9 +70,9 @@ else % Select a random segment
     end
 end
 
-% INSERT CODE HERE
-answer = 'Title of song';   % Replace this line
-confidence = 1;             % Replace this line
+[id, c] = match_segment(sound, fs);
+answer = songs{id};         % Replace this line
+confidence = c;             % Replace this line
 
 
 if recordingOn
