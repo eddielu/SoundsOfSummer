@@ -45,6 +45,7 @@ for i = 1:length(songs)
         
         % INSERT CODE HERE
         % Use fingerprint.m, convert_to_pairs.m, and add_to_table.m
+        add_to_table(convert_to_pairs(fingerprint(sound,fs)), songIndex);
         
         songid{songIndex,1} = songs{i};
     end

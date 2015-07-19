@@ -31,6 +31,7 @@ window = 0.064 * new_smpl_rate;
 noverlap = 0.032 * new_smpl_rate;
 [S,F,T] = spectrogram(averagedSound, round(window), round(noverlap), [], new_smpl_rate);
 S = abs(S);
+S
 % INSERT SPECTROGRAM CODE HERE.
 magS = S; % Remove and replace this line to create a magS that is the magnitute of the spectrogram
 
