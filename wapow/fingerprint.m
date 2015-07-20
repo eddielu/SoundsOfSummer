@@ -6,7 +6,6 @@ function peaks = fingerprint(sound, fs)
 %
 % This function is currently incomplete.
 
-
 new_smpl_rate = 8000; % sampling rate
 time_res = .064; % for spectrogram
 gs = 4; % grid size for spectrogram peak search
@@ -30,6 +29,8 @@ averagedSound = resampledSound - dcBias;
 window = 0.064 * new_smpl_rate;
 noverlap = 0.032 * new_smpl_rate;
 [S,F,T] = spectrogram(averagedSound, round(window), round(noverlap), [], new_smpl_rate);
+
+
 S = abs(S);
 
 
