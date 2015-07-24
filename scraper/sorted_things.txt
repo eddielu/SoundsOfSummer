@@ -1,6 +1,5 @@
-
-CD
-USB drive
+cd
+usb drive
 air freshener
 apple
 bag
@@ -51,7 +50,7 @@ cork
 couch
 credit card
 cup
-deodorant 
+deodorant
 desk
 doll
 door

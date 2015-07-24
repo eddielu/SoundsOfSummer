@@ -4,8 +4,7 @@
  * Date: 07/24/15
  */
 "use strict"
-const
-  fs = require('fs');
+const fs = require('fs');
 
 
 // File must be given
@@ -47,10 +46,22 @@ fs.readFile(process.argv[2], function(err, data) {
     let text = data.toString();
     let items = text.split('\n');
     items.sort();
+
+    // Remove duplicates
+    let uniqueItems = [];
+    let lastItem = '';
+    for (let i = 0; i < items.length; i++) {
+      if (lastItem.trim().toLocaleLowerCase() != items[i].trim().toLocaleLowerCase()) {
+        uniqueItems.push(items[i].trim().toLocaleLowerCase());
+        lastItem = items[i];
+      }
+    }
+      
+    // Write to file
     fs.writeFile(newfile, '', function(err) {
       throw new Error('Write(clear) file error');
     }, function callback() {
-      writeLinesInOrder(items, newfile);
+      writeLinesInOrder(uniqueItems, newfile);
       console.log("Done! Successfully written to " + newfile);
     });
 
