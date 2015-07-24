@@ -51,8 +51,7 @@ fs.readFile(process.argv[2], function(err, data) {
       throw new Error('Write(clear) file error');
     }, function callback() {
       writeLinesInOrder(items, newfile);
-      //DONE
-      console.log("Successfully written to " + newfile);
+      console.log("Done! Successfully written to " + newfile);
     });
 
   }
