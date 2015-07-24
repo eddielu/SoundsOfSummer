@@ -4,8 +4,7 @@
  * Date: 07/24/15
  */
 "use strict"
-const
-  fs = require('fs');
+const fs = require('fs');
 
 
 // File must be given
