@@ -1,10 +1,16 @@
 # Ignore central sound/song folder
 recognizer/songs/
 recognizer/sounds/
+recognizer/html/
 
 # Ignore all audio files
 *.mp3
 *.wav
+
+# Ignore all image files
+*.png
+*.jpg
+*.gif
 
 # Ignore old Matlab databases
 *.mat_songs
