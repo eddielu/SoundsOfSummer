@@ -1,8 +1,8 @@
 % Read all MP3 files in 'dir' and add them to the database training if they
 % are not already in 'songid'
 
-dir = 'songs'; % This is the folder that the MP3 files must be placed in.
-songs = getMp3List(dir);
+dir = 'sounds'; % This is the folder that the MP3 files must be placed in.
+songs = getWavList(dir);
 
 hashTableSize = 100000; % This can be adjusted.  Setting it too small will cause more accidental collisions.
 
@@ -41,7 +41,14 @@ for i = 1:length(songs)
         someNewSongs = 1;
         songIndex = songIndex + 1;
         filename = strcat(dir, filesep, songs{i});
-        [sound,fs] = mp3read(filename);
+        [sound,fs] = wavread(filename);
+        % IF STEREO CLIP, FIND AVERAGE
+        [m n] = size(sound);
+        if n == 2
+            sound = mean(sound, 2);
+        end
+        
+ 
         
         % INSERT CODE HERE
         % Use fingerprint.m, convert_to_pairs.m, and add_to_table.m

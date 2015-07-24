@@ -64,7 +64,7 @@ if optional_plot
     figure(3)
     clf
     y = zeros(2,1);
-    for k = 16
+    for k = 1
         subplot(2,1,1)
         hist(matches{k},1000)
         y(k) = max(hist(matches{k},1000));
@@ -75,7 +75,7 @@ if optional_plot
         y(k) = max(hist(matches{k},1000));
     end
     
-    for k = 16
+    for k = 1
         subplot(2,1,1)
         axis([-inf, inf, 0, max(y)])
     end

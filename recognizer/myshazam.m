@@ -1,6 +1,6 @@
 % Make a recording or 
 
-recordingOn = 1; %1 for recording from microphone, 0 for random segment
+recordingOn = 0; %1 for recording from microphone, 0 for random segment
 duration = 5; % Seconds
 
 
@@ -37,24 +37,32 @@ if recordingOn
     % Store data in Double-precision array.
     sound = getaudiodata(recObj);
     
-    % TODO: MAKE THIS SMARTER
-    sound = mean(sound, 2);
+    % IF STEREO CLIP, FIND AVERAGE
+    [m n] = size(sound);
+    if n == 2
+        sound = mean(sound, 2);
+    end
     
 else % Select a random segment
     
     add_noise = 0; % Optionally add noise by making this 1.
     SNRdB = 5; % Signal-to-noise Ratio in dB, if noise is added.  Can be negative.
     
-    dir = 'songs'; % This is the folder that the MP3 files are in.
-    songs = getMp3List(dir);
+    dir = 'sounds'; % This is the folder that the MP3 files are in.
+    songs = getWavList(dir);
     
     % Select random song
     thisSongIndex = ceil(length(songs)*rand);
     filename = strcat(dir, filesep, songs{thisSongIndex});
-    [sound,fs] = mp3read(filename);
-    sound = mean(sound,2);
-    sound = sound - mean(sound);
+    [sound,fs] = wavread(filename);
     
+    % IF STEREO CLIP, FIND AVERAGE
+    [m n] = size(sound);
+    if n == 2
+        sound = mean(sound, 2);
+    end
+    
+    sound = sound - mean(sound);
     % Select random segment
     if length(sound) > ceil(duration*fs)
         shiftRange = length(sound) - ceil(duration*fs)+1;
