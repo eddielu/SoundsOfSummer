@@ -1,5 +1,6 @@
 cd
 usb drive
+unsafe javascript attempt to access frame with url about:blank from frame with url file:///home/ubuntu/workspace/node_modules/casperjs/bin/bootstrap.js. domains, protocols and ports must match.
 air freshener
 apple
 bag
