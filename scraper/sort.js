@@ -56,6 +56,7 @@ fs.readFile(process.argv[2], function(err, data) {
         lastItem = items[i];
       }
     }
+    uniqueItems.sort();
       
     // Write to file
     fs.writeFile(newfile, '', function(err) {
