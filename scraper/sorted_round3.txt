@@ -1,6 +1,6 @@
 pencil
 baggie
-bath fizzers
+bath
 beanie
 brownie
 buns
@@ -29,3 +29,9 @@ jeans
 tampon
 tooth paste
 van
+fan
+water
+keyboard
+pot
+roll
+ball
