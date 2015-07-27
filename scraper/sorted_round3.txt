@@ -1,4 +1,4 @@
-#2 pencil
+pencil
 baggie
 bath fizzers
 beanie
@@ -7,7 +7,6 @@ buns
 burger
 cake mix
 cement stone
-check book
 cheese block
 cookies
 cool whip can
@@ -22,14 +21,11 @@ ipod charger
 macaroni and cheese
 nail filer
 pipe
-pop can
+can
 quilt
 rope
 sandwich
-skinny jeans
+jeans
 tampon
-thong
 tooth paste
-vans
-wireless control
-word search
+van

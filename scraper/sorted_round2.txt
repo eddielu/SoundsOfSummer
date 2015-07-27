@@ -87,9 +87,8 @@ tree house
 trees
 trucks
 vaccume
-wallpaper
-webkinz
 window frame
 wire
 wristband
 yarn
+pin
