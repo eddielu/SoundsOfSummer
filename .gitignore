@@ -15,3 +15,5 @@ recognizer/html/
 # Ignore old Matlab databases
 *.mat_songs
 
+
+node_modules/
