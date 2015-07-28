@@ -1,11 +1,20 @@
 air freshener
 apple
 bag
+baggie
+ball
 balloon
 bananas
+bath
+bathmat
+bathtub
+beanie
 bed
 beef
+bike
 blanket
+blender
+blind
 blouse
 book
 bookmark
@@ -18,77 +27,140 @@ box
 bracelet
 bread
 brocolli
+brownie
 buckel
+buns
+burger
+bus
 button
+cake mix
 camera
+can
 candle
 candy wrapper
 canvas
+cape
 car
+carpet
 carrots
+cars
+case
 cat
 cd
+ceiling
 cell phone
+cement stone
+cereal bowl
+chainlink fence
 chair
 chalk
 chapter book
 charger
 checkbook
+cheese block
 chocolate
+ciggarette
 cinder block
 clamp
 clay pot
 clock
 clothes
+cloud
 coasters
+coke bottle
+comb
 computer
 conditioner
 controller
 cookie jar
+cookies
+cool whip can
 cork
 couch
+crackers
+crayon
 credit card
 cup
+cups
+deck
 deodorant
 desk
+dinner plates
+disc
+dog house
 doll
 door
+doorframe
 drawer
+dress
 drill press
+drum
+duct tape
 earser
+envelope
 eye liner
+eyeglasses
 face wash
 fake flowers
+fan
 flag
 floor
 flowers
+folder
 food
+foot
 fork
 fridge
+frizz control
+gage
+gasoline
+gel
 glass
 glasses
 glow stick
 greeting card
 grid paper
+guitar
+gum
+gun
 hair brush
 hair tie
+hairnet
 hanger
+hat
 headphones
 helmet
+hoodie
+hotdog
 house
+ice cream
 ice cube tray
 ipod
+ipod charger
+jeans
+jewelry
 key chain
 keyboard
+keyboard
 keys
+kiwi
 knife
+knives
+kumquat
 lace
 lamp
 lamp shade
+leaf
 leg warmers
+letter
+lightbulb
 lip gloss
+locker
+lollypop
 lotion
+macaroni and cheese
 magnet
+mailbox
 milk
 mirror
 model car
@@ -96,17 +168,29 @@ money
 monitor
 mop
 mouse pad
+mouse-pad
 mp3 player
 nail clippers
 nail file
+nail filer
+necklace
 needle
 newspaper
+notebook
+notepad
+orange
 outlet
+oven
 packing peanuts
 paint brush
+painting
+pans
 pants
 paper
+paper clip
+patio
 pen
+pencil
 pencil
 perfume
 phone
@@ -114,15 +198,34 @@ photo album
 piano
 picture frame
 pillow
+pin
+pin
+pipe
+plane
+plaque
+plastic bag
 plastic fork
+plastic ware
 plate
 playing card
 pool stick
+popsicle
+pot
+pots
+printer
 puddle
 purse
+quilt
 radio
+railing
+refrigerator
 remote
+remote control
 ring
+road signs
+rock
+roll
+rope
 rubber band
 rubber duck
 rug
@@ -130,17 +233,23 @@ rusty nail
 sailboat
 sand paper
 sandal
+sandwich
+saucers
+scissors
 scotch tape
 screw
 seat belt
 shampoo
 sharpie
 shawl
+shelf
 shirt
 shoe lace
 shoes
 shovel
+shower curtain
 sidewalk
+silverware
 sketch pad
 slipper
 soap
@@ -149,42 +258,66 @@ soda can
 sofa
 soy sauce packet
 speakers
+spikes
 sponge
 spoon
 spring
+stapler
+stereo
 sticky note
 stockings
 stop sign
+stove
+strawberry
 street lights
+string
 sun glasses
+sundial
 table
+tampon
 teddies
+telephone
 television
 thermometer
 thermostat
 thread
+tile
 tire swing
 tissue box
+toaster
 toe ring
+toenail
 toilet
 tomato
+tooth paste
 tooth picks
 toothbrush
 toothpaste
 towel
+train
 tree
+tree house
+trees
 truck
+trucks
 tv
 twezzers
 twister
 usb drive
+vaccume
+van
 vase
 video games
 wagon
 wallet
 washing machine
 watch
+water
 water bottle
 white out
 window
+window frame
+wire
+wristband
+yarn
 zipper

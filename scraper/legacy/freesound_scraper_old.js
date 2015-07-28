@@ -14,9 +14,7 @@ var password    = credentials[1];
 casper.on("remote.message", function(message) {
   this.echo("remote console.log: " + message);
 });
-casper.on('http.status.404', function(resource) {
-    this.log('Hey, this one is 404: ' + resource.url, 'warning');
-});
+
 
 // For each item in list, look for audio clips and grab the links to the clips
 function scrapeItem(i) {
@@ -41,16 +39,18 @@ function scrapeItem(i) {
   }
 
 
-
-  casper.thenOpen('https://www.freesound.org/search/?q=' + items[i].split(' ').join('+'), function(response) {
-    console.log(response.url);
-    casper.capture('blah.png');
+  var url = "";
+  casper.then(function() {
+    var query = items[i].split(' ').join('+');
+    url = 'https://www.freesound.org/search/?q=' + query;
   });
+
+  casper.thenOpen(url);
 
   // Get the first few links to audio clips for each query
   var links_to_files = [];
   casper.then(function() {
-    //console.log("I just opened a new webpage");
+    console.log("I just opened: " + url);
     links_to_files = casper.evaluate(function() {
       var links = [];
       // Get the first 3 links
@@ -64,23 +64,16 @@ function scrapeItem(i) {
       if (alinks.length >= 3) {
         links.push(alinks[2].href);
       }
-      console.log("Selected " + alinks.length);
+      console.log(links);
       return links;
     });
-    downloadLinks(0);
   });
 
 
   // Download the audio clips found
   function downloadLinks(j) {
-    console.log(j);
-    if (j >= links_to_files.length) {
-      return;
-    }
     //casper.echo("Calling downloadLinks");
-    casper.thenOpen(links_to_files[j], function() {
-      casper.echo("Successfully opened" + links_to_files[j]);
-    });
+    casper.thenOpen(links_to_files[j]);
     casper.then(function() {
       var download_link = casper.evaluate(function() {
           return document.getElementById('download_button').href;
@@ -92,8 +85,11 @@ function scrapeItem(i) {
         casper.download(download_link, filename);
       }
     });
-    downloadLinks(j+1);
+    if (j < links_to_files - 1) {
+      downloadLinks(j+1);
+    }
   };
+  downloadLinks(0);
 
   if (i < items.length - 1) {
     scrapeItem(i+1);
