@@ -48,13 +48,13 @@ else % Select a random segment
     add_noise = 0; % Optionally add noise by making this 1.
     SNRdB = 5; % Signal-to-noise Ratio in dB, if noise is added.  Can be negative.
     
-    dir = 'sounds'; % This is the folder that the MP3 files are in.
-    songs = getWavList(dir);
+    dir = 'sounds_master'; % This is the folder that the MP3 files are in.
+    songs = getMp3List(dir);
     
     % Select random song
     thisSongIndex = ceil(length(songs)*rand);
     filename = strcat(dir, filesep, songs{thisSongIndex});
-    [sound,fs] = wavread(filename);
+    [sound,fs] = mp3read(filename);
     
     % IF STEREO CLIP, FIND AVERAGE
     [m n] = size(sound);

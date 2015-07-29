@@ -1,3 +1,5 @@
 # Freesound account credentials
 credentials.txt
+
+# Packaged sound files
 *.zip

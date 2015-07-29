@@ -1,6 +1,5 @@
 # Ignore central sound/song folder
-recognizer/songs/
-recognizer/sounds/
+recognizer/sounds_master/
 recognizer/html/
 
 # Ignore all audio files
