@@ -1,18 +1,20 @@
 # Scraper
 
-- - -
+
 
 ## Overview
 Secret-Sounds-of-Summer's scraper uses Node.js and CasperJS to download
 free audio clips from Freesound.org. These clips are then used to train
 the Secret-Sounds-of-Summer's recognizer.
-**Dependencies**
+
+**Dependencies:**
+
 1. Node.js
 2. PhantomJS
 3. CasperJS
 4. credentials.txt (containing user/pass combination to Freesound.org)
 
-- - -
+
 
 ## How to Use
 Before starting, make sure you have Dependencies 1-3 installed. Then,
@@ -25,7 +27,9 @@ password.
 
 Then, create a new text file containing search terms, one search term
 per line. Then run,
+```
   ./process.sh searchterms.txt
+```
 This will compare the terms in searchterms.txt with those in
 completed_things.txt. It will add new terms to completed_things.txt and
 then go out to Freesound.org and download the first three audio clips it
