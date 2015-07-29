@@ -1,10 +1,19 @@
-var 
-  casper = require('casper').create();
+/*
+ * CasperJS script to scrape the random items produced on randomlists.com
+ *
+ * Author: Eddie Lu
+ * Date: 7/29/15
+ *
+ */
 
+var casper = require('casper').create();
+
+// Enable Remote messaging
 //casper.on("remote.message", function(message) {
 //  this.echo("remote console.log: " + message);
 //});
 
+// Tell randomlists to generate 200 items
 casper.start('https://www.randomlists.com/things', function() {
   this.fill('form#options', {
     'qty': '200',
@@ -12,6 +21,7 @@ casper.start('https://www.randomlists.com/things', function() {
   }, true);
 });
 
+// Wait until the items have been generated, and then output the itmes to stdout
 casper.waitFor(function check() {
   return this.evaluate(function() {
     return document.querySelectorAll('li').length >= 200;
@@ -33,6 +43,7 @@ casper.waitFor(function check() {
   }
 });
 
+// run script
 casper.run(function () {
     setTimeout(function() {
         phantom.exit();

@@ -1,11 +1,14 @@
 /*
  * Takes in a file, sorts its lines alphabetically. Finds and outputs items that are
  * not found in completed_file. Updates completed_file.
+ *
  * Author: Eddie Lu
  * Date: 07/24/15
+ *
  */
+
 "use strict"
-const 
+const
   fs             = require('fs'),
   completed_file = 'completed_things.txt';
 
@@ -13,7 +16,7 @@ const
 /*
  * Takes an array and file name. Prints out items in file name and in
  * completed_file.
- */ 
+ */
 function writeLinesInOrder(items, newfile) {
   let writeLine = function(i) {
     if (i >= items.length) {
@@ -36,12 +39,12 @@ function writeLinesInOrder(items, newfile) {
 }
 
 
-/* 
+/*
  * Determine if appropriate command line args have been provided.
  * Determine new file name.
  */
 function checkArgs() {
-  
+
   // File must be given
   if (process.argv.length < 3) {
     console.log("File to be sorted must be provided");
@@ -53,7 +56,7 @@ function checkArgs() {
   if (process.argv.length > 3) {
     newfile = process.argv[3];
   }
-  
+
   return newfile;
 }
 
@@ -61,9 +64,9 @@ function checkArgs() {
 /*
  * Find unique/new items in the provided file. Output these items into a new file.
  * Finally, update completed_things to contain these items/terms.
- */ 
+ */
 function main() {
-  
+
   // File name to write results to
   let newfile = checkArgs();
   // Contains completed items (i.e. terms that have already been scraped for)
@@ -102,7 +105,7 @@ function main() {
         writeLinesInOrder(uniqueItems, newfile);
         console.log("Successfully written to " + newfile);
       });
-      
+
       // Update completed_file to contain new elements
       fs.writeFile(completed_file, '', function(err) {
         console.log("Error clearing " + completed_file);

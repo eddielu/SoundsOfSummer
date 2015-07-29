@@ -1,3 +1,15 @@
+/*
+ * Takes in a file to process. Iterates through the terms and downloads at maximum 3 audio
+ * files for each term. Currently limits search to 2-channel .mp3 files with 44100 Hz sample
+ * rates.
+ *
+ * Dependencies: Input file, credentials.txt
+ *
+ * Author: Eddie Lu
+ * Date: 07/29/15
+ *
+ */
+
 var casper      = require('casper').create();
 var fs          = require('fs');
 
@@ -20,9 +32,9 @@ casper.on('http.status.404', function(resource) {
 
 // For each item in list, look for audio clips and grab the links to the clips
 function scrapeItem(i) {
-  //casper.echo("Calling scrapeItem");
+
   if (i == 0) {
-        // First, log in to Freesound.org
+    // First, log in to Freesound.org
     casper.start('https://www.freesound.org/home/login/?next=/', function() {
       this.fill('form[action="."]', {
         'username': username,
@@ -54,7 +66,7 @@ function scrapeItem(i) {
     links_to_files = casper.evaluate(function() {
       var links = [];
       // Get the first 3 links
-      var alinks = document.querySelectorAll('.title'); 
+      var alinks = document.querySelectorAll('.title');
       if (alinks.length >= 1) {
         links.push(alinks[0].href);
       }
@@ -102,7 +114,7 @@ function scrapeItem(i) {
 scrapeItem(0);
 
 
-
+// run casper
 casper.run(function () {
     setTimeout(function() {
         phantom.exit();
