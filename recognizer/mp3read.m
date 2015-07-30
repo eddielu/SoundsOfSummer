@@ -60,23 +60,6 @@ function [Y,FS,NBITS,OPTS] = mp3read(FILE,N,MONO,DOWNSAMP,DELAY)
 
 % $Header: /Users/dpwe/matlab/columbiafns/RCS/mp3read.m,v 1.7 2010/04/09 18:13:00 dpwe Exp dpwe $
 
-% 2003-07-20 dpwe@ee.columbia.edu  This version calls mpg123.
-% 2004-08-31 Fixed to read whole files correctly
-% 2004-09-08 Uses mp3info to get info about mp3 files too
-% 2004-09-18 Reports all mp3info fields in OPTS.fmt; handles MPG2LSF sizes
-%            + added MONO, DOWNSAMP flags, changed default behavior.
-% 2005-09-28 Fixed bug reading full-rate stereo as 1ch (thx bjoerns@vjk.dk)
-% 2006-09-17 Chop off initial 2257 sample delay (for 44.1 kHz mp3)
-%            so read-write loop doesn't get progressively delayed.
-%            You can suppress this with a 5th argument of 0.
-% 2007-02-04 Added support for FMT argument to match wavread
-%            Added automatic selection of binary etc. to allow it
-%            to work cross-platform without editing prior to
-%            submitting to Matlab File Exchange
-% 2007-07-23 Tweaks to 'size' mode so it exactly agrees with read data.
-% 2009-03-15 Added fixes so 'http://...' file URLs will work.
-% 2009-03-26 Added filename length check to http: test (thx fabricio guzman)
-
 % find our baseline directory
 path = fileparts(which('mp3read'));
 

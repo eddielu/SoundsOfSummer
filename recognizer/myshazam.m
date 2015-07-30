@@ -1,7 +1,7 @@
-% Make a recording or 
+% Make a recording or randomly select one
 
-recordingOn = 0; %1 for recording from microphone, 0 for random segment
-duration = 5; % Seconds
+recordingOn = 0;    % 1 for recording from microphone, 0 for random segment
+duration = 5;       % Seconds
 
 
 
@@ -45,8 +45,8 @@ if recordingOn
     
 else % Select a random segment
     
-    add_noise = 0; % Optionally add noise by making this 1.
-    SNRdB = 5; % Signal-to-noise Ratio in dB, if noise is added.  Can be negative.
+    add_noise = 1; % Optionally add noise by making this 1.
+    SNRdB = 20; % Signal-to-noise Ratio in dB, if noise is added.  Can be negative.
     
     dir = 'sounds_master'; % This is the folder that the MP3 files are in.
     songs = getMp3List(dir);
@@ -56,7 +56,7 @@ else % Select a random segment
     filename = strcat(dir, filesep, songs{thisSongIndex});
     [sound,fs] = mp3read(filename);
     
-    % IF STEREO CLIP, FIND AVERAGE
+    % If given stereo clip, find the average.
     [m n] = size(sound);
     if n == 2
         sound = mean(sound, 2);
@@ -79,8 +79,8 @@ else % Select a random segment
 end
 
 [id, c] = match_segment(sound, fs);
-answer = songs{id};         % Replace this line
-confidence = c;             % Replace this line
+answer = songs{id};         % Set the answer
+confidence = c;             
 
 
 if recordingOn

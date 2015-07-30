@@ -11,8 +11,9 @@ recognizer/html/
 *.jpg
 *.gif
 
-# Ignore old Matlab databases
+# Ignore Matlab databases
 *.mat_songs
+*.mat
 
 
 node_modules/

@@ -7,13 +7,11 @@ function peaks = fingerprint(sound, fs)
 % This function is currently incomplete.
 
 
-new_smpl_rate = 8000; % sampling rate
-time_res = .064; % for spectrogram
-gs = 4; % grid size for spectrogram peak search
-desiredPPS = 30; % scales the threshold
+new_smpl_rate = 8000;       % sampling rate
+time_res = .064;            % for spectrogram
+gs = 4;                     % grid size for spectrogram peak search
+desiredPPS = 30;            % scales the threshold
 
-
-% INSERT PREPROCESING CODE HERE
 
 
 % Create the spectrogram
@@ -33,22 +31,18 @@ noverlap = 0.032 * new_smpl_rate;
 S = abs(S);
 
 
-% INSERT SPECTROGRAM CODE HERE.
-magS = S; % Remove and replace this line to create a magS that is the magnitute of the spectrogram
+
+magS = S;
 
 
 
 % Find the local peaks with respect to the nearest gs entries in both
 % directions
 
-
-
-
-% INSERT PEAK FINDING CODE HERE.
-peaks = ones(size(magS)); % 2D boolean array indicating position of local peaks
+peaks = ones(size(magS));                               % 2D boolean array indicating position of local peaks
 for horShift = -gs:gs
     for vertShift = -gs:gs
-        if(vertShift ~= 0 || horShift ~= 0) % Avoid comparing to self
+        if(vertShift ~= 0 || horShift ~= 0)             % Avoid comparing to self
             CS = circshift(S, [vertShift, horShift]);
             P = (S > CS);
             peaks = peaks .* P;
@@ -63,9 +57,9 @@ end
 % possible by adapting the threshold throughout the length of the segment,
 % and setting a lower threshold for higher frequencies.
 
-% THE FOLLOWING CODE TO BE UNCOMMENTED AFTER EXPERIMENTING WITH THRESHOLD
+
 peakMags = peaks.*magS;
-sortedpeakMags = sort(peakMags(:),'descend'); % sort all peak values in order
+sortedpeakMags = sort(peakMags(:),'descend');   % sort all peak values in order
 threshold = sortedpeakMags(ceil(max(T)*desiredPPS));
 
 % Apply threshold
