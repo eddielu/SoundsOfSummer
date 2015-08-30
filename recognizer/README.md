@@ -5,7 +5,7 @@ Secret-Sounds-of-Summer processes audio clips, training itself to recognize a wi
 variety of different sounds. The algorithm dervies from the Fourier transform algorithm
 used by Shazam, whereby a signal is fingerprinted based on its peaks in the
 time **and** frequency domains. The algorithm has been implemented from scratch with
-additional considerations, such as repetition capturing and 
+additional considerations, such as repetition capturing and clustering.
 These additional sound processing techniques allow for more accurate recognition of 
 shorter and more disparate sound signals.
 
